@@ -1,4 +1,7 @@
-package codingdojo;
+package codingdojo.dao;
+
+import codingdojo.domain.ShoppingList;
+import codingdojo.domain.Customer;
 
 /**
  * The interface Customer data layer.

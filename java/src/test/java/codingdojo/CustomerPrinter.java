@@ -1,5 +1,7 @@
 package codingdojo;
 
+import codingdojo.domain.Customer;
+
 /**
  * The type Customer printer.
  */

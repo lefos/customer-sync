@@ -1,6 +1,6 @@
 package codingdojo.dto;
 
-import codingdojo.Customer;
+import codingdojo.domain.Customer;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,7 +9,7 @@ import java.util.Collection;
  * The type Customer matches.
  */
 public class CustomerMatches {
-    private Collection<Customer> duplicates = new ArrayList<>();
+    private final Collection<Customer> duplicates = new ArrayList<>();
     private String matchTerm;
     private Customer customer;
 

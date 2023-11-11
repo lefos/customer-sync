@@ -1,8 +1,12 @@
-package codingdojo;
+package codingdojo.service;
 
+import codingdojo.domain.ShoppingList;
+import codingdojo.dao.CustomerDataLayer;
+import codingdojo.domain.Customer;
 import codingdojo.domain.CustomerType;
 import codingdojo.dto.CustomerMatches;
 import codingdojo.dto.ExternalCustomer;
+import codingdojo.exception.ConflictException;
 import com.spun.util.StringUtils;
 
 import java.util.List;
@@ -117,7 +121,7 @@ public class CustomerSync {
         } else {
             //in case the existing db customer has not set or invalid name, the name is being updated
             dbCustomer.setName(externalCustomer.getName());
-            updateCustomer(dbCustomer);
+            dbCustomer = updateCustomer(dbCustomer);
         }
         updateContactInfo(externalCustomer, dbCustomer);
         if (customerMatches.hasDuplicates()) {

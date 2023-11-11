@@ -1,7 +1,7 @@
 package codingdojo.dto;
 
-import codingdojo.Address;
-import codingdojo.ShoppingList;
+import codingdojo.domain.Address;
+import codingdojo.domain.ShoppingList;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package codingdojo;
 
+import codingdojo.domain.Address;
+
 /**
  * The type Address printer.
  */

@@ -1,5 +1,8 @@
-package codingdojo;
+package codingdojo.service;
 
+import codingdojo.domain.ShoppingList;
+import codingdojo.dao.CustomerDataLayer;
+import codingdojo.domain.Customer;
 import codingdojo.dto.CustomerMatches;
 
 /**

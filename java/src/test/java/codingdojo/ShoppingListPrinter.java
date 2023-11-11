@@ -1,5 +1,7 @@
 package codingdojo;
 
+import codingdojo.domain.ShoppingList;
+
 import java.util.List;
 
 /**

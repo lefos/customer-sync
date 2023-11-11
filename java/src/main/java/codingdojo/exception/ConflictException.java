@@ -1,4 +1,4 @@
-package codingdojo;
+package codingdojo.exception;
 
 /**
  * The type Conflict exception.

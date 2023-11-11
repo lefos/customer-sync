@@ -1,6 +1,4 @@
-package codingdojo;
-
-import codingdojo.domain.CustomerType;
+package codingdojo.domain;
 
 import java.util.ArrayList;
 import java.util.List;

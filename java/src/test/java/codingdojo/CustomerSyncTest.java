@@ -1,12 +1,16 @@
 package codingdojo;
 
+import codingdojo.domain.Address;
+import codingdojo.domain.Customer;
 import codingdojo.domain.CustomerType;
+import codingdojo.domain.ShoppingList;
 import codingdojo.dto.ExternalCustomer;
+import codingdojo.exception.ConflictException;
+import codingdojo.service.CustomerSync;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -178,7 +182,6 @@ class CustomerSyncTest {
         Approvals.verify(toAssert);
     }
 
-
     @Test
     void syncByCompanyNumber() {
         String companyNumber = "12345";
@@ -289,7 +292,6 @@ class CustomerSyncTest {
         Approvals.verify(toAssert);
     }
 
-
     private ExternalCustomer createExternalPrivatePerson() {
         ExternalCustomer externalCustomer = new ExternalCustomer();
         externalCustomer.setExternalId("12345");
@@ -297,10 +299,9 @@ class CustomerSyncTest {
         externalCustomer.setAddress(new Address("123 main st", "Stockholm", "SE-123 45"));
         externalCustomer.setPreferredStore("Nordstan");
         externalCustomer.setBonusPoints(50);
-        externalCustomer.setShoppingLists(Arrays.asList(new ShoppingList("lipstick", "foundation")));
+        externalCustomer.setShoppingLists(Collections.singletonList(new ShoppingList("lipstick", "foundation")));
         return externalCustomer;
     }
-
 
     private ExternalCustomer createExternalCompany() {
         ExternalCustomer externalCustomer = new ExternalCustomer();
@@ -308,7 +309,7 @@ class CustomerSyncTest {
         externalCustomer.setName("Acme Inc.");
         externalCustomer.setAddress(new Address("123 main st", "Helsingborg", "SE-123 45"));
         externalCustomer.setCompanyNumber("470813-8895");
-        externalCustomer.setShoppingLists(Arrays.asList(new ShoppingList("lipstick", "blusher")));
+        externalCustomer.setShoppingLists(Collections.singletonList(new ShoppingList("lipstick", "blusher")));
         return externalCustomer;
     }
 
