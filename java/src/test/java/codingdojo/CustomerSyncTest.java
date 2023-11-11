@@ -12,6 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CustomerSyncTest {
 
+    /**
+     * The external record already exists in the customer db, so no need to create it.
+     * There is new data in some fields, which is merged in.
+     */
     @Test
     public void syncCompanyByExternalId(){
         String externalId = "12345";
@@ -293,7 +297,6 @@ public class CustomerSyncTest {
         externalCustomer.setName("Joe Bloggs");
         externalCustomer.setAddress(new Address("123 main st", "Stockholm", "SE-123 45"));
         externalCustomer.setPreferredStore("Nordstan");
-        externalCustomer.setBonusPoints(50);
         externalCustomer.setShoppingLists(Arrays.asList(new ShoppingList("lipstick", "foundation")));
         return externalCustomer;
     }
