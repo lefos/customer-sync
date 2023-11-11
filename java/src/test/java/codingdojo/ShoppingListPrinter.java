@@ -1,11 +1,20 @@
 package codingdojo;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
+/**
+ * The type Shopping list printer.
+ */
 public class ShoppingListPrinter {
+    /**
+     * Print shopping lists string.
+     *
+     * @param shoppingLists the shopping lists
+     * @param indent        the indent
+     * @return the string
+     */
     public static String printShoppingLists(List<ShoppingList> shoppingLists, String indent) {
-        if (shoppingLists.size() == 0) {
+        if (shoppingLists.isEmpty()) {
             return "[]";
         }
         if (shoppingLists.size() == 1) {

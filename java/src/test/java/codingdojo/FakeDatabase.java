@@ -13,6 +13,11 @@ public class FakeDatabase implements CustomerDataLayer {
     private final Set<ShoppingList> shoppingLists = new HashSet<>();
 
 
+    /**
+     * Add customer.
+     *
+     * @param customer the customer
+     */
     public void addCustomer(Customer customer) {
         if (customer.getExternalId() != null) {
             this.customersByExternalId.put(customer.getExternalId(), customer);
@@ -62,6 +67,11 @@ public class FakeDatabase implements CustomerDataLayer {
         return this.customersByCompanyNumber.get(companyNumber);
     }
 
+    /**
+     * Gets all customers.
+     *
+     * @return the all customers
+     */
     public List<Customer> getAllCustomers() {
         Set<Customer> allCustomers = new HashSet<Customer>(customersByExternalId.values());
         allCustomers.addAll(customersByMasterExternalId.values());
@@ -73,6 +83,11 @@ public class FakeDatabase implements CustomerDataLayer {
         return sortedList;
     }
 
+    /**
+     * Print contents string.
+     *
+     * @return the string
+     */
     public String printContents() {
         StringBuilder sb = new StringBuilder();
         sb.append("Fake Database.\nAll Customers {\n");

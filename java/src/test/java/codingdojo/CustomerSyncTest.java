@@ -1,19 +1,22 @@
 package codingdojo;
 
+import codingdojo.domain.CustomerType;
+import codingdojo.dto.ExternalCustomer;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class CustomerSyncTest {
+class CustomerSyncTest {
 
     @Test
-    public void syncCompanyByExternalId(){
+    void syncCompanyByExternalId() {
         String externalId = "12345";
 
         ExternalCustomer externalCustomer = createExternalCompany();
@@ -37,7 +40,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void syncPrivatePersonByExternalId(){
+    void syncPrivatePersonByExternalId() {
         String externalId = "12345";
 
         ExternalCustomer externalCustomer = createExternalPrivatePerson();
@@ -63,7 +66,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void syncShoppingLists(){
+    void syncShoppingLists() {
         String externalId = "12345";
 
         ExternalCustomer externalCustomer = createExternalCompany();
@@ -71,7 +74,7 @@ public class CustomerSyncTest {
 
         Customer customer = createCustomerWithSameCompanyAs(externalCustomer);
         customer.setExternalId(externalId);
-        customer.setShoppingLists(Arrays.asList(new ShoppingList("eyeliner", "blusher")));
+        customer.setShoppingLists(Collections.singletonList(new ShoppingList("eyeliner", "blusher")));
 
         FakeDatabase db = new FakeDatabase();
         db.addCustomer(customer);
@@ -88,7 +91,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void syncNewCompanyCustomer(){
+    void syncNewCompanyCustomer() {
 
         ExternalCustomer externalCustomer = createExternalCompany();
         externalCustomer.setExternalId("12345");
@@ -107,7 +110,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void syncNewPrivateCustomer(){
+    void syncNewPrivateCustomer() {
 
         ExternalCustomer externalCustomer = createExternalPrivatePerson();
         externalCustomer.setExternalId("12345");
@@ -126,7 +129,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void conflictExceptionWhenExistingCustomerIsPerson() {
+    void conflictExceptionWhenExistingCustomerIsPerson() {
         String externalId = "12345";
 
         ExternalCustomer externalCustomer = createExternalCompany();
@@ -151,7 +154,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void syncByExternalIdButCompanyNumbersConflict(){
+    void syncByExternalIdButCompanyNumbersConflict() {
         String externalId = "12345";
 
         ExternalCustomer externalCustomer = createExternalCompany();
@@ -177,7 +180,7 @@ public class CustomerSyncTest {
 
 
     @Test
-    public void syncByCompanyNumber(){
+    void syncByCompanyNumber() {
         String companyNumber = "12345";
 
         ExternalCustomer externalCustomer = createExternalCompany();
@@ -202,7 +205,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void syncByCompanyNumberWithConflictingExternalId(){
+    void syncByCompanyNumberWithConflictingExternalId() {
         String companyNumber = "12345";
 
         ExternalCustomer externalCustomer = createExternalCompany();
@@ -228,7 +231,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void conflictExceptionWhenExistingCustomerIsCompany() {
+    void conflictExceptionWhenExistingCustomerIsCompany() {
         String externalId = "12345";
 
         ExternalCustomer externalCustomer = createExternalPrivatePerson();
@@ -254,7 +257,7 @@ public class CustomerSyncTest {
     }
 
     @Test
-    public void syncCompanyByExternalIdWithNonMatchingMasterId(){
+    void syncCompanyByExternalIdWithNonMatchingMasterId() {
         String externalId = "12345";
 
         ExternalCustomer externalCustomer = createExternalCompany();
