@@ -119,7 +119,7 @@ public class CustomerSync {
             dbCustomer = createCompanyCustomer(externalCustomer);
             created = true;
         } else {
-            //in case the existing db customer has not set or invalid name, the name is being updated
+            //in case the existing db customer has not set any or has invalid name, the name is being updated
             dbCustomer.setName(externalCustomer.getName());
             dbCustomer = updateCustomer(dbCustomer);
         }
@@ -187,8 +187,8 @@ public class CustomerSync {
         }
         String dbcCompanyNumber = dbCustomer.getCompanyNumber();
         //if the company number provided externally is different from the that of the existing
-        // db stored record, the existing record is modified and is treated as duplicate of
-        // the new one which will be created based on teh external customer object
+        // db persisted record, the existing record is modified and is treated as duplicate of
+        // the new one which will be created based on the external customer object
         if (!ecCompanyNumber.equals(dbcCompanyNumber)) {
             dbCustomer.setMasterExternalId(null);
             customerMatches.addDuplicate(dbCustomer);
